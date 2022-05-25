@@ -5,51 +5,48 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.idat.MayoServicioPrueba.model.Productos;
+import com.idat.MayoServicioPrueba.model.Producto;
 
-//Agregando anotaciones
 @Repository
 public class ProductoRepositoryImpl implements ProductoRepository {
 
-	public List<Productos> listar = new ArrayList<Productos>();
+	public List<Producto> listar = new ArrayList<Producto>();
 	
 	@Override
-	public void guardarProducto(Productos producto) {
+	public void guardarProducto(Producto producto) {
 		// TODO Auto-generated method stub
 		listar.add(producto);
+
 	}
 
 	@Override
-	public void actualizarProducto(Productos producto) {
-		Productos p = obtenerProductoId(producto.getIdProducto());
+	public void actualizarProducto(Producto producto) {
+		// TODO Auto-generated method stub
+		Producto p = obtenerProductoId(producto.getIdProducto());
 		listar.remove(p);
 		listar.add(producto);
+
 	}
 
 	@Override
 	public void eliminarProducto(Integer id) {
-		Productos p = obtenerProductoId(id);
-		listar.remove(p);
-	}
-
-	@Override
-	public List<Productos> listarProductos() {
 		// TODO Auto-generated method stub
-		return null;
+		Producto p = obtenerProductoId(id);
+		listar.remove(p);
+		
+
 	}
 
 	@Override
-	public Productos obtenerProductoId(Integer id) {
-		
-//		if(listar != null){
-//			for (Productos productos : listar) {
-//				if (productos.getIdProducto() == id)
-//					return productos;				
-//			}
-//		}
-//		return null;
-		
-	//Programando en flujos
-	return listar.stream().filter(p -> p.getIdProducto()==id).findFirst().orElse(null);	
+	public List<Producto> listarProducto() {
+		// TODO Auto-generated method stub
+		return listar;
 	}
+
+	@Override
+	public Producto obtenerProductoId(Integer id) {
+		// TODO Auto-generated method stub
+		return listar.stream().filter(p ->p.getIdProducto()==id).findFirst().orElse(null);
+	}
+
 }

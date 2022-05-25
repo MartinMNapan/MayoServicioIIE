@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.idat.MayoServicioPrueba.model.Productos;
+import com.idat.MayoServicioPrueba.model.Producto;
 import com.idat.MayoServicioPrueba.service.ProductoService;
 
 @Controller
@@ -18,8 +18,8 @@ public class ProductoController {
 	private ProductoService service;
 	
 	@RequestMapping("/listar")
-	public @ResponseBody List<Productos> listar() {
-		return service.listarProductos();
+	public @ResponseBody List<Producto> listar(){
+		return service.listarProducto();
 	}
 
 }

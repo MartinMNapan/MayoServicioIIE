@@ -5,25 +5,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.idat.MayoServicioPrueba.model.Productos;
+import com.idat.MayoServicioPrueba.model.Producto;
 import com.idat.MayoServicioPrueba.repository.ProductoRepository;
 
 @Service
 public class ProductoServiceImpl implements ProductoService {
 	
-	//Agregamos la anotacion @Autowired para llamar al interface productoRepository
 	@Autowired
 	private ProductoRepository repository;
 
 	@Override
-	public void guardarProducto(Productos producto) {
+	public void guardarProducto(Producto producto) {
 		// TODO Auto-generated method stub
 		repository.guardarProducto(producto);
 
 	}
 
 	@Override
-	public void actualizarProducto(Productos producto) {
+	public void actualizarProducto(Producto producto) {
 		// TODO Auto-generated method stub
 		repository.actualizarProducto(producto);
 
@@ -37,13 +36,13 @@ public class ProductoServiceImpl implements ProductoService {
 	}
 
 	@Override
-	public List<Productos> listarProductos() {
+	public List<Producto> listarProducto() {
 		// TODO Auto-generated method stub
-		return repository.listarProductos();
+		return repository.listarProducto();
 	}
 
 	@Override
-	public Productos obtenerProductoId(Integer id) {
+	public Producto obtenerProductoId(Integer id) {
 		// TODO Auto-generated method stub
 		return repository.obtenerProductoId(id);
 	}
