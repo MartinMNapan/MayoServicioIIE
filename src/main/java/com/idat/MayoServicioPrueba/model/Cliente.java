@@ -12,8 +12,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
 @Table(name = "clientes")
+@Entity
 public class Cliente {
 	
 	@Id
@@ -22,16 +22,13 @@ public class Cliente {
 	private String cliente;
 	private Integer celular;
 	
-	//insertamos el list<> de la otra tabla unidda de muchos a muchos
 	@ManyToMany(mappedBy = "cliente", 
 			    cascade = 
 			    {CascadeType.PERSIST ,CascadeType.MERGE})
 	private List<Producto> productos = new ArrayList<>();
 	
-	//agregamos la anotacion de uno a muchos @OneToMany
-	@OneToMany(mappedBy = "cliente")//no olvidar agregar el mappebBy = "cliente"
+	@OneToMany(mappedBy = "cliente")
 	private List<Item> items = new ArrayList<>();
-	
 	
 	public Integer getIdCliente() {
 		return idCliente;

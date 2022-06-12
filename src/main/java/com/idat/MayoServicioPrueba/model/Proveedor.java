@@ -16,23 +16,21 @@ public class Proveedor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idProveedor;
-	
 	private String proveedor;
 	private String direccion;
 	
-
 	//Relacion de uno a uno**
 	//se inserta la anotación
 	//se inserta la anotacion @JoinColumn
+	//Codigo para definir el foreign key de id_producto en la clase Productos
 	@OneToOne
 	@JoinColumn(name = "id_producto", 
 				nullable = false, 
 				unique = true, 
 				foreignKey = @ForeignKey(foreignKeyDefinition = 
-				"foreign key(id_producto) references Productos(id_producto)"))
-	//Codigo para definir el foreign key de id_producto en la clase Productos
+				"foreign key (id_producto) references Producto(id_producto)"))
 	private Producto producto;
-
+	
 	public Integer getIdProveedor() {
 		return idProveedor;
 	}

@@ -16,7 +16,7 @@ import com.idat.MayoServicioPrueba.model.Producto;
 import com.idat.MayoServicioPrueba.service.ProductoService;
 
 @Controller
-@RequestMapping("/producto/v1")
+@RequestMapping(path =  "/producto/v1")
 public class ProductoController {
 	
 	@Autowired

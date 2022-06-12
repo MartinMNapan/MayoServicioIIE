@@ -20,16 +20,14 @@ public class Item {
 	private Integer cantidad;
 	private Double  total;
 	
-	//agregamos la anotacion de muchos a uno @ManyToOne
 	@ManyToOne
-	//en donde va heredar el foreign key de la tabla cliente se 
-	//insertara el @JoinColumn para agregar el id_cliente
 	@JoinColumn(
 			name = "id_cliente",
 			nullable = false,
 			unique = true,
 			foreignKey = @ForeignKey
-			(foreignKeyDefinition = "foreign key(id_cliente)references cliente(id_cliente)"))
+			(foreignKeyDefinition = 
+			"foreign key (id_cliente) references clientes(id_cliente)"))
 	private Cliente cliente;
 	
 	public Integer getIdItem() {

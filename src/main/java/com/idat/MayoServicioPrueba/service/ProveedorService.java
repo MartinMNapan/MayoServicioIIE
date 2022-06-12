@@ -4,8 +4,6 @@ import java.util.List;
 
 import com.idat.MayoServicioPrueba.model.Proveedor;
 
-
-
 public interface ProveedorService {
 	
 	void guardarProveedor(Proveedor proveedor);

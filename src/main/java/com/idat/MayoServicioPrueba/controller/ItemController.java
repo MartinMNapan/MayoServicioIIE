@@ -11,28 +11,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.idat.MayoServicioPrueba.model.Producto;
-import com.idat.MayoServicioPrueba.model.Proveedor;
-import com.idat.MayoServicioPrueba.service.ProductoService;
-import com.idat.MayoServicioPrueba.service.ProveedorService;
+import com.idat.MayoServicioPrueba.model.Item;
+import com.idat.MayoServicioPrueba.service.ItemService;
 
 @Controller
-@RequestMapping(path = "/proveedor/v1")
-public class ProveedorController {
+@RequestMapping(path = "item/v1")
+public class ItemController {
 	
 	@Autowired
-	private ProveedorService service;
-		
-	@RequestMapping("/listar")
-	public @ResponseBody ResponseEntity<List<Proveedor>> listar(){
-		return new ResponseEntity<List<Proveedor>>(service.listarProveedor(), HttpStatus.OK);
+	private ItemService service;
+	
+	@RequestMapping("listar")
+	public @ResponseBody ResponseEntity<List<Item>> listar(){
+		return new ResponseEntity<List<Item>>(service.listarItem(),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/guardar", method = RequestMethod.POST)
-	public ResponseEntity<Void> guardar(@RequestBody Proveedor proveedor){
-		service.guardarProveedor(proveedor);
+	public ResponseEntity<Void> guardar(@RequestBody Item item){
+		service.guardarItem(item);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
 
 }
-	

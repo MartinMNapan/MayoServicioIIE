@@ -22,7 +22,6 @@ public class Producto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idProducto;
-	
 	private String nombreProducto;
 	private String descripcion;
 	private Double precio;
@@ -35,12 +34,10 @@ public class Producto {
 	
 	//insertamos el list<> de la otra tabla unidda de muchos a muchos
 	//Insertamos la anotacion
-	
-	//copiampos el cascade = {.....}
-	@ManyToMany(cascade = {CascadeType.PERSIST ,CascadeType.MERGE})
-	
 	//Dentro de JoinTable agregamos el JoinColums y el inverseJoinColums para
 	//crear la nueva tabla name = "producto_cliente"
+	//copiampos el cascade = {.....}
+	@ManyToMany(cascade = {CascadeType.PERSIST ,CascadeType.MERGE})
 	@JoinTable(
 			name = "productos_cliente",
 			joinColumns = @JoinColumn(
