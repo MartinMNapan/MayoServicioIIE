@@ -5,44 +5,45 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.idat.MayoServicioPrueba.model.Producto;
-import com.idat.MayoServicioPrueba.repository.ProductoRepository;
+import com.idat.MayoServicioPrueba.model.Item;
+import com.idat.MayoServicioPrueba.repository.ItemRepository;
+
 
 @Service
-public class ProductoServiceImpl implements ProductoService {
+public class ItemserviceImpl implements ItemService {
 	
 	@Autowired
-	private ProductoRepository repository;
+	private ItemRepository repository;
 
 	@Override
-	public void guardarProducto(Producto producto) {
+	public void guardarItem(Item item) {
 		// TODO Auto-generated method stub
-		repository.save(producto);
+		repository.save(item);
 
 	}
 
 	@Override
-	public void actualizarProducto(Producto producto) {
+	public void actualizarItem(Item item) {
 		// TODO Auto-generated method stub
-		repository.saveAndFlush(producto);
+		repository.saveAndFlush(item);
 
 	}
 
 	@Override
-	public void eliminarProducto(Integer id) {
+	public void eliminarItem(Integer id) {
 		// TODO Auto-generated method stub
 		repository.deleteById(id);
 
 	}
 
 	@Override
-	public List<Producto> listarProducto() {
+	public List<Item> listarItem() {
 		// TODO Auto-generated method stub
 		return repository.findAll();
 	}
 
 	@Override
-	public Producto obtenerProductoId(Integer id) {
+	public Item obtenerItemId(Integer id) {
 		// TODO Auto-generated method stub
 		return repository.findById(id).orElse(null);
 	}

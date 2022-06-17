@@ -5,44 +5,44 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.idat.MayoServicioPrueba.model.Producto;
-import com.idat.MayoServicioPrueba.repository.ProductoRepository;
+import com.idat.MayoServicioPrueba.model.Cliente;
+import com.idat.MayoServicioPrueba.repository.ClienteRepository;
 
 @Service
-public class ProductoServiceImpl implements ProductoService {
+public class ClienteServiceImpl implements ClienteService {
 	
 	@Autowired
-	private ProductoRepository repository;
+	private ClienteRepository repository;
 
 	@Override
-	public void guardarProducto(Producto producto) {
+	public void guardarCliente(Cliente cliente) {
 		// TODO Auto-generated method stub
-		repository.save(producto);
+		repository.save(cliente);
 
 	}
 
 	@Override
-	public void actualizarProducto(Producto producto) {
+	public void actualizarCliente(Cliente cliente) {
 		// TODO Auto-generated method stub
-		repository.saveAndFlush(producto);
+		repository.saveAndFlush(cliente);
 
 	}
 
 	@Override
-	public void eliminarProducto(Integer id) {
+	public void eliminarCliente(Integer id) {
 		// TODO Auto-generated method stub
 		repository.deleteById(id);
 
 	}
 
 	@Override
-	public List<Producto> listarProducto() {
+	public List<Cliente> listarCliente() {
 		// TODO Auto-generated method stub
 		return repository.findAll();
 	}
 
 	@Override
-	public Producto obtenerProductoId(Integer id) {
+	public Cliente obtenerClienteId(Integer id) {
 		// TODO Auto-generated method stub
 		return repository.findById(id).orElse(null);
 	}
