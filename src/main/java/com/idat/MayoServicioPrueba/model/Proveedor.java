@@ -18,11 +18,7 @@ public class Proveedor {
 	private Integer idProveedor;
 	private String proveedor;
 	private String direccion;
-	
-	//Relacion de uno a uno**
-	//se inserta la anotación
-	//se inserta la anotacion @JoinColumn
-	//Codigo para definir el foreign key de id_producto en la clase Productos
+
 	@OneToOne
 	@JoinColumn(name = "id_producto", 
 				nullable = false, 

@@ -26,17 +26,10 @@ public class Producto {
 	private String descripcion;
 	private Double precio;
 	private Integer stock;
-	
-	//Relacion de uno a uno**
-	//se inserta la anotación
+
 	@OneToOne(mappedBy = "producto")
 	private Proveedor proveedor;
-	
-	//insertamos el list<> de la otra tabla unidda de muchos a muchos
-	//Insertamos la anotacion
-	//Dentro de JoinTable agregamos el JoinColums y el inverseJoinColums para
-	//crear la nueva tabla name = "producto_cliente"
-	//copiampos el cascade = {.....}
+
 	@ManyToMany(cascade = {CascadeType.PERSIST ,CascadeType.MERGE})
 	@JoinTable(
 			name = "productos_cliente",
@@ -54,8 +47,7 @@ public class Producto {
 				unique = true, 
 				foreignKey = @ForeignKey(foreignKeyDefinition = 
 				"foreign key(id_cliente) references clientes(id_cliente)")
-				)
-			
+				)	
 	)
 	private List<Cliente> cliente = new ArrayList<>();
 	

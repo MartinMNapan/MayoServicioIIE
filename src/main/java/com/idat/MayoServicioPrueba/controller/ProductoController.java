@@ -12,23 +12,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.idat.MayoServicioPrueba.dto.ProductoDTORequest;
+import com.idat.MayoServicioPrueba.dto.ProductoDTOResponse;
 import com.idat.MayoServicioPrueba.model.Producto;
 import com.idat.MayoServicioPrueba.service.ProductoService;
 
 @Controller
-@RequestMapping(path =  "/producto/v1")
+@RequestMapping(path = "/producto/v1")
 public class ProductoController {
 	
 	@Autowired
 	private ProductoService service;
 	
 	@RequestMapping("/listar")
-	public @ResponseBody ResponseEntity<List<Producto>> listar(){
-		return new ResponseEntity<List<Producto>>(service.listarProducto(), HttpStatus.OK);
+	public @ResponseBody ResponseEntity<List<ProductoDTOResponse>> listar(){
+		return new ResponseEntity<List<ProductoDTOResponse>>(service.listarProducto(), HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/guardar", method = RequestMethod.POST)
-	public ResponseEntity<Void> guardar(@RequestBody Producto producto) {
+	public ResponseEntity<Void> guardar(@RequestBody ProductoDTORequest producto) {
 		service.guardarProducto(producto);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
@@ -36,7 +38,7 @@ public class ProductoController {
 	@RequestMapping(path = "/eliminar/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> eliminar(@PathVariable Integer id) {
 		
-		Producto p = service.obtenerProductoId(id);
+		ProductoDTOResponse p = service.obtenerProductoId(id);
 		
 		if(p != null) {
 			service.eliminarProducto(id);
@@ -48,8 +50,8 @@ public class ProductoController {
 	}
 	
 	@RequestMapping(path = "/actualizar/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> actualizar(@RequestBody Producto producto) {
-		Producto p = service.obtenerProductoId(producto.getIdProducto());
+	public ResponseEntity<Void> actualizar(@RequestBody ProductoDTORequest producto) {
+		ProductoDTOResponse p = service.obtenerProductoId(producto.getId());
 		if(p != null) {
 			service.actualizarProducto(producto);
 			return new ResponseEntity<Void>(HttpStatus.OK);
@@ -58,11 +60,11 @@ public class ProductoController {
 	}
 	
 	@RequestMapping(path = "/listar/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Producto> obtenerId(@PathVariable Integer id) {
-		Producto p = service.obtenerProductoId(id);
+	public ResponseEntity<ProductoDTOResponse> obtenerId(@PathVariable Integer id) {
+		ProductoDTOResponse p = service.obtenerProductoId(id);
 		if(p != null) {
-			return new ResponseEntity<Producto>(service.obtenerProductoId(id),HttpStatus.OK);
+			return new ResponseEntity<ProductoDTOResponse>(service.obtenerProductoId(id),HttpStatus.OK);
 		}
-		return new ResponseEntity<Producto>(HttpStatus.NOT_FOUND);
+		return new ResponseEntity<ProductoDTOResponse>(HttpStatus.NOT_FOUND);
 	}
 }
