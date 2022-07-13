@@ -13,6 +13,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
@@ -60,10 +62,20 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 //			.csrf().disable();
 	}
 	
+	
+	
 	@Bean
-	public TokenStore store() {
-		return new InMemoryTokenStore();
+	public JwtTokenStore store() {
+		return new JwtTokenStore(accessTokenConverter());
 	}
+	
+	@Bean
+	public JwtAccessTokenConverter accessTokenConverter() {
+		JwtAccessTokenConverter tokenConverter = new JwtAccessTokenConverter();
+		tokenConverter.setSigningKey("te-sigo-en-youtube");
+		return tokenConverter;
+	}
+	
 	
 	
 	@Bean
